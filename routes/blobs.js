@@ -17,30 +17,7 @@ router.use(methodOverride(function(req, res){
 //build the REST operations at the base for blobs
 //this will be accessible from http://127.0.0.1:3030/blobs if the default route for / is left unchanged
 router.route('/')
-    //GET all blobs
-    // .get(function(req, res, next) {
-    //     //retrieve all blobs from Monogo
-    //     mongoose.model('form').find({}, function (err, blobs) {
-    //           if (err) {
-    //               return console.error(err);
-    //           } else {
-    //               //respond to both HTML and JSON. JSON responses require 'Accept: application/json;' in the Request Header
-    //               res.format({
-    //                   //HTML response will render the index.jade file in the views/blobs folder. We are also setting "blobs" to be an accessible variable in our jade view
-    //                 html: function(){
-    //                     res.render('blobs/index', {
-    //                           title: 'Qustion Submissions',
-    //                           "blobs" : blobs
-    //                       });
-    //                 },
-    //                 //JSON response will show all blobs in JSON format
-    //                 json: function(){
-    //                     res.json(infophotos);
-    //                 }
-    //             });
-    //           }     
-    //     });
-    // })
+    
     //POST a new blob
     .post(function(req, res) {
         // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
@@ -85,6 +62,31 @@ router.route('/')
               }
         })
     });
+
+//GET all blobs
+router.get('/management', function(req, res, next) {
+        //retrieve all blobs from Monogo
+        mongoose.model('form').find({}, function (err, blobs) {
+              if (err) {
+                  return console.error(err);
+              } else {
+                  //respond to both HTML and JSON. JSON responses require 'Accept: application/json;' in the Request Header
+                  res.format({
+                      //HTML response will render the index.jade file in the views/blobs folder. We are also setting "blobs" to be an accessible variable in our jade view
+                    html: function(){
+                        res.render('blobs/index', {
+                              title: 'Qustion Submissions',
+                              "blobs" : blobs
+                          });
+                    },
+                    //JSON response will show all blobs in JSON format
+                    json: function(){
+                        res.json(infophotos);
+                    }
+                });
+              }     
+        });
+    })
 
     /* GET New Blob page. */
 router.get('/new', function(req, res) {
