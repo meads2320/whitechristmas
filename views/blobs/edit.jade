@@ -1,0 +1,59 @@
+extends ../layout
+
+block content
+    h1.
+        Submission ID #{blob._id}
+    form(action='/blobs/#{blob._id}/edit',method='post',name='updateblob',enctype='application/x-www-form-urlencoded')
+         div.row Name: 
+            input.form-control#inputName(type="text", value='#{blob.name}', name="name")
+            br
+         div.row Address: 
+            input.form-control#inputName(type="text", value='#{blob.address}', name="address")
+            br
+         div.row Favorite Color: 
+            input.form-control#inputName(type="text", value='#{blob.favColor}', name="favColor")
+            br
+         div.row Favorite Beverage: 
+            input.form-control#inputName(type="text", value='#{blob.favBeverage}', name="favBeverage")
+            br
+         div.row Favorite Snack: 
+            input.form-control#inputName(type="text", value='#{blob.favSnack}', name="favSnack")
+            br
+         div.row Favorite Books or Authors: 
+            input.form-control#inputName(type="text", value='#{blob.favBookAuthor}', name="favBookAuthor")
+            br
+         div.row Favorite Scent (If any): 
+            input.form-control#inputName(type="text", value='#{blob.favScent}', name="favScent")
+            br
+         div.row Video Game Console (If any): 
+            input.form-control#inputName(type="text", value='#{blob.videoGameConsole}', name="videoGameConsole")
+            br
+         div.row favSportTeam (If any): 
+            input.form-control#inputName(type="text", value='#{blob.favSportTeam}', name="favSportTeam")
+            br
+         div.row I Collect: 
+            input.form-control#inputName(type="text", value='#{blob.iCollect}', name="iCollect")
+            br
+         div.row List Hobbies: 
+            input.form-control#inputName(type="text", value='#{blob.listHobbies}', name="listHobbies")
+            br
+         div.row Favorite Stores: 
+            input.form-control#inputName(type="text", value='#{blob.favStores}', name="favStores")
+            br
+         div.row Shirt Size: 
+            input.form-control#inputName(type="text", value='#{blob.shirtSize}', name="shirtSize")
+            br
+         div.row Shoe Size: 
+            input.form-control#inputName(type="text", value='#{blob.shirtSize}', name="shoeSize")
+            br
+         div.row I Read: 
+            input.form-control#inputName(type="text", value='#{blob.shoeSize}', name="iRead")
+            br
+         div.row I Want: 
+            input.form-control#inputName(type="text", value='#{blob.name}', name="iWant")
+            br
+         div.row 
+            input(type='hidden',value='PUT',name='_method')
+         div.row 
+            button.btn.btn-success#btnSubmit(type='submit').
+                Update

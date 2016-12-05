@@ -1,0 +1,20 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('../images/christmas.jpg');
+  color: #fff;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.container { 
+  border-radius: 25px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.46);
+}
+
+th { 
+  background: rgba(0, 0, 0, 0.46);
+}

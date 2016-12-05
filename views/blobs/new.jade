@@ -1,0 +1,74 @@
+extends ../layout
+
+block content
+    h1.
+        #{title}
+    br
+    form.form-group#formAddBlob(name="addblob",method="post",action="/blobs")
+         div.row Name: 
+
+            input.form-control#inputName(type="text", placeholder="ex. John Smith", name="name") 
+            br
+         div.row Address:
+ 
+            input.form-control#inputName(type="text", placeholder="ex. 123 Nort Street Tampa, FL 33607", name="address")
+            br
+         div.row Favorite Color: 
+   
+            input.form-control#inputName(type="text", placeholder="ex. Green", name="favColor")
+            br
+         div.row Favorite Beverage:
+ 
+            input.form-control#inputName(type="text", placeholder="ex. Coca-Cola", name="favBeverage")
+            br
+         div.row Favorite Snack:
+ 
+            input.form-control#inputName(type="text", placeholder="ex. Peanuts", name="favSnack")
+            br
+         div.row Favorite Books or Authors:
+ 
+            input.form-control#inputName(type="text", placeholder="ex. Charles Dickens or Oliver Twist", name="favBookAuthor")
+            br
+         div.row Favorite Scent (If any):
+ 
+            input.form-control#inputName(type="text", placeholder="ex. New Car Smell", name="favScent")
+            br
+         div.row Video Game Console (If any):
+ 
+            input.form-control#inputName(type="text", placeholder="ex. PS4 / PS3 / Xbox ...", name="videoGameConsole")
+            br
+         div.row favSportTeam (If any): 
+ 
+            input.form-control#inputName(type="text", placeholder="ex. Tampa Bay Buccaneers", name="favSportTeam")
+            br
+         div.row I Collect:
+ 
+            input.form-control#inputName(type="text", placeholder="ex. Clocks", name="iCollect")
+            br
+         div.row List Hobbies:
+ 
+            input.form-control#inputName(type="text", placeholder="ex. Running", name="listHobbies")
+            br
+         div.row Favorite Stores:
+ 
+            input.form-control#inputName(type="text", placeholder="ex. Macy's", name="favStores")
+            br
+         div.row Shirt Size:
+ 
+            input.form-control#inputName(type="text", placeholder="ex. Medium", name="shirtSize")
+            br
+         div.row Shoe Size:
+ 
+            input.form-control#inputName(type="text", placeholder="ex. 8 Mens or 9.5 Womens", name="shoeSize")
+            br
+         div.row I Read:
+ 
+            input.form-control#inputName(type="text", placeholder="ex. Fiction novels", name="iRead")
+            br
+         div.row I Want: 
+
+            input.form-control#inputName(type="text", placeholder="ex. A Specific Item that you may want", name="iWant")
+            br
+         div.row 
+            button.btn.btn-success#btnSubmit(type="submit") submit
+            
