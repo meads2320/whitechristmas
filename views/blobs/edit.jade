@@ -2,7 +2,7 @@ extends ../layout
 
 block content
     h1
-    
+
     form(action='/blobs/#{blob._id}/edit',method='post',name='updateblob',enctype='application/x-www-form-urlencoded')
          div.row Name: 
             input.form-control#inputName(type="text", value='#{blob.name}', name="name")
@@ -50,7 +50,7 @@ block content
             input.form-control#inputName(type="text", value='#{blob.shoeSize}', name="iRead")
             br
          div.row I Want: 
-            input.form-control#inputName(type="text", value='#{blob.name}', name="iWant")
+            input.form-control#inputName(type="text", value='#{blob.iWant}', name="iWant")
             br
          div.row 
             input(type='hidden',value='PUT',name='_method')

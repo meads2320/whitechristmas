@@ -128,18 +128,18 @@ router.route('/:id')
   .get(function(req, res) {
     mongoose.model('form').findById(req.id, function (err, blob) {
       if (err) {
-        console.log('GET Error: There was a problem retrieving: ' + err);
+        console.log('GET Error: There was a problem retrieving: ' + ersr);
       } else {
-        console.log('GET Retrieving ID: ' + blob._id);
+        console.log('GET Retrieving ID: ' + (blob ? blob._id : null));
        
         res.format({
           html: function(){
               res.render('blobs/show', {
-                "blob" : blob
+                "blob" : blob ? blob : {}
               });
           },
           json: function(){
-              res.json(blob);
+              res.json(blob ? blob : {});
           }
         });
       }
@@ -155,19 +155,19 @@ router.get('/:id/edit', function(req, res) {
             console.log('GET Error: There was a problem retrieving: ' + err);
         } else {
             //Return the blob
-            console.log('GET Retrieving ID: ' + blob._id);
+            console.log('GET Retrieving ID: ' + blob ? blob._id : null);
             //format the date properly for the value to show correctly in our edit form
 
             res.format({
                 //HTML response will render the 'edit.jade' template
                 html: function(){
                        res.render('blobs/edit', {
-                           "blob" : blob
+                           "blob" : blob ? blob : {}
                         });
                  },
                  //JSON response will return the JSON output
                 json: function(){
-                       res.json(blob);
+                       res.json(blob ? blob : {});
                  }
             });
         }
@@ -230,7 +230,7 @@ router.put('/:id/edit', function(req, res) {
 //                     return console.error(err);
 //                 } else {
 //                     //Returning success messages saying it was deleted
-//                     console.log('DELETE removing ID: ' + blob._id);
+//                     console.log('DELETE removing ID: ' + blob ? blob._id : null);
 //                     res.format({
 //                         //HTML returns us back to the main page, or you can create a success page
 //                           html: function(){
