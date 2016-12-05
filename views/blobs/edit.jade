@@ -1,8 +1,8 @@
 extends ../layout
 
 block content
-    h1.
-        Submission ID #{blob._id}
+    h1
+    
     form(action='/blobs/#{blob._id}/edit',method='post',name='updateblob',enctype='application/x-www-form-urlencoded')
          div.row Name: 
             input.form-control#inputName(type="text", value='#{blob.name}', name="name")
