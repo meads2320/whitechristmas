@@ -18,29 +18,29 @@ router.use(methodOverride(function(req, res){
 //this will be accessible from http://127.0.0.1:3030/blobs if the default route for / is left unchanged
 router.route('/')
     //GET all blobs
-    .get(function(req, res, next) {
-        //retrieve all blobs from Monogo
-        mongoose.model('form').find({}, function (err, blobs) {
-              if (err) {
-                  return console.error(err);
-              } else {
-                  //respond to both HTML and JSON. JSON responses require 'Accept: application/json;' in the Request Header
-                  res.format({
-                      //HTML response will render the index.jade file in the views/blobs folder. We are also setting "blobs" to be an accessible variable in our jade view
-                    html: function(){
-                        res.render('blobs/index', {
-                              title: 'Qustion Submissions',
-                              "blobs" : blobs
-                          });
-                    },
-                    //JSON response will show all blobs in JSON format
-                    json: function(){
-                        res.json(infophotos);
-                    }
-                });
-              }     
-        });
-    })
+    // .get(function(req, res, next) {
+    //     //retrieve all blobs from Monogo
+    //     mongoose.model('form').find({}, function (err, blobs) {
+    //           if (err) {
+    //               return console.error(err);
+    //           } else {
+    //               //respond to both HTML and JSON. JSON responses require 'Accept: application/json;' in the Request Header
+    //               res.format({
+    //                   //HTML response will render the index.jade file in the views/blobs folder. We are also setting "blobs" to be an accessible variable in our jade view
+    //                 html: function(){
+    //                     res.render('blobs/index', {
+    //                           title: 'Qustion Submissions',
+    //                           "blobs" : blobs
+    //                       });
+    //                 },
+    //                 //JSON response will show all blobs in JSON format
+    //                 json: function(){
+    //                     res.json(infophotos);
+    //                 }
+    //             });
+    //           }     
+    //     });
+    // })
     //POST a new blob
     .post(function(req, res) {
         // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
@@ -75,7 +75,7 @@ router.route('/')
                         // If it worked, set the header so the address bar doesn't still say /adduser
                         res.location("blobs");
                         // And forward to success page
-                        res.redirect("/blobs");
+                        res.redirect("/blobs/" + blob._id);
                     },
                     //JSON response will show the newly created blob
                     json: function(){
@@ -215,36 +215,36 @@ router.put('/:id/edit', function(req, res) {
         });
 });
 
-//DELETE a Blob by ID
-router.delete('/:id/edit', function (req, res){
-    //find blob by ID
-    mongoose.model('form').findById(req.id, function (err, blob) {
-        if (err) {
-            return console.error(err);
-        } else {
-            //remove it from Mongo
-            blob.remove(function (err, blob) {
-                if (err) {
-                    return console.error(err);
-                } else {
-                    //Returning success messages saying it was deleted
-                    console.log('DELETE removing ID: ' + blob._id);
-                    res.format({
-                        //HTML returns us back to the main page, or you can create a success page
-                          html: function(){
-                               res.redirect("/blobs");
-                         },
-                         //JSON returns the item with the message that is has been deleted
-                        json: function(){
-                               res.json({message : 'deleted',
-                                   item : blob
-                               });
-                         }
-                      });
-                }
-            });
-        }
-    });
-});
+// //DELETE a Blob by ID
+// router.delete('/:id/edit', function (req, res){
+//     //find blob by ID
+//     mongoose.model('form').findById(req.id, function (err, blob) {
+//         if (err) {
+//             return console.error(err);
+//         } else {
+//             //remove it from Mongo
+//             blob.remove(function (err, blob) {
+//                 if (err) {
+//                     return console.error(err);
+//                 } else {
+//                     //Returning success messages saying it was deleted
+//                     console.log('DELETE removing ID: ' + blob._id);
+//                     res.format({
+//                         //HTML returns us back to the main page, or you can create a success page
+//                           html: function(){
+//                                res.redirect("/blobs");
+//                          },
+//                          //JSON returns the item with the message that is has been deleted
+//                         json: function(){
+//                                res.json({message : 'deleted',
+//                                    item : blob
+//                                });
+//                          }
+//                       });
+//                 }
+//             });
+//         }
+//     });
+// });
 
 module.exports = router;

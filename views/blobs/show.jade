@@ -1,11 +1,11 @@
 extends ../layout
 
 block content
-    h1.
-        Submission Id:  #{blob._id}
-
+    h1 Edit Submission
+    br 
+    h3 
          p Name: #{blob.name}
-         
+
          p Address: #{blob.address}
 
          p Favorite Color: #{blob.favColor}
@@ -35,4 +35,6 @@ block content
          p I Read: #{blob.iRead}
 
          p I Want: #{blob.iWant}
+
+         a.btn.btn-info(href='/blobs/#{blob._id}/edit') Edit Submission
 
