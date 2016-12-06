@@ -15,7 +15,8 @@ var blobSchema = new mongoose.Schema({
   shirtSize: String,
   shoeSize: String,
   iRead: String,
-  iWant: String
+  iWant: String,
+  gender: String
 //   badge: Number,
 //   dob: { type: Date, default: Date.now },
 //   isloved: Boolean

@@ -38,7 +38,8 @@ router.route('/')
             shirtSize: req.body.shirtSize,
             shoeSize: req.body.shoeSize,
             iRead: req.body.iRead,
-            iWant: req.body.iWant
+            iWant: req.body.iWant,
+            gender: req.body.gender
 
         }, function (err, blob) {
               if (err) {

@@ -16,11 +16,13 @@ block content
 
          p Favorite Books or Authors: #{blob.favBookAuthor}
 
-         p Favorite Scent (If any): #{blob.favScent}
+         if  (blob.gender == "gal")   
+            p Favorite Scent (If any): #{blob.favScent}
 
-         p Video Game Console (If any): #{blob.videoGameConsole}
-        
-         p favSportTeam (If any): #{blob.favSportTeam}
+         if  (blob.gender == "guy")   
+            p Video Game Console (If any): #{blob.videoGameConsole}
+            
+            p favSportTeam (If any): #{blob.favSportTeam}
 
          p I Collect: #{blob.iCollect}
 

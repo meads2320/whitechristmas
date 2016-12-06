@@ -22,15 +22,17 @@ block content
          div.row Favorite Books or Authors: 
             input.form-control#inputName(type="text", value='#{blob.favBookAuthor}', name="favBookAuthor")
             br
-         div.row Favorite Scent (If any): 
-            input.form-control#inputName(type="text", value='#{blob.favScent}', name="favScent")
-            br
-         div.row Video Game Console (If any): 
-            input.form-control#inputName(type="text", value='#{blob.videoGameConsole}', name="videoGameConsole")
-            br
-         div.row favSportTeam (If any): 
-            input.form-control#inputName(type="text", value='#{blob.favSportTeam}', name="favSportTeam")
-            br
+         if  (blob.gender == "gal")   
+            div.row Favorite Scent (If any): 
+                input.form-control#inputName(type="text", value='#{blob.favScent}', name="favScent")
+                br
+        if  (blob.gender == "guy")   
+            div.row Video Game Console (If any): 
+                input.form-control#inputName(type="text", value='#{blob.videoGameConsole}', name="videoGameConsole")
+                br
+            div.row favSportTeam (If any): 
+                input.form-control#inputName(type="text", value='#{blob.favSportTeam}', name="favSportTeam")
+                br
          div.row I Collect: 
             input.form-control#inputName(type="text", value='#{blob.iCollect}', name="iCollect")
             br
