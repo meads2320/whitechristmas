@@ -75,7 +75,7 @@ router.get('/management', function(req, res, next) {
                       //HTML response will render the index.jade file in the views/blobs folder. We are also setting "blobs" to be an accessible variable in our jade view
                     html: function(){
                         res.render('blobs/index', {
-                              title: 'Qustion Submissions',
+                              title: 'Qustionnaire',
                               "blobs" : blobs
                           });
                     },
@@ -90,8 +90,13 @@ router.get('/management', function(req, res, next) {
 
     /* GET New Blob page. */
 router.get('/new', function(req, res) {
-    res.render('blobs/new', { title: 'Add New Christmas Question List' });
+    res.render('blobs/new', { title: 'Add New Qustionnaire (Guys)' });
 });
+
+router.get('/newTwo', function(req, res) {
+    res.render('blobs/newTwo', { title: 'Add New Qustionnaire (Gals)' });
+});
+
 
 // route middleware to validate :id
 router.param('id', function(req, res, next, id) {
