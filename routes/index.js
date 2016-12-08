@@ -3,7 +3,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Qustionnaire' });
+
+  let cookie = cookies.get('id');
+  if(cookie){
+    res.redirect('/blobs/' + cookie);
+  }
+  else res.render('index', { title: 'Qustionnaire' });
 });
 
 module.exports = router;

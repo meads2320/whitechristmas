@@ -3,6 +3,8 @@ var express = require('express'),
     mongoose = require('mongoose'), //mongo connection
     bodyParser = require('body-parser'), //parses information from POST
     methodOverride = require('method-override'); //used to manipulate POST
+    
+var cookies = require('browser-cookies');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride(function(req, res){
@@ -47,6 +49,9 @@ router.route('/')
               } else {
                   //Blob has been created
                   console.log('POST creating new blob: ' + blob);
+
+                  cookies.set('id', blob._id, {expires: 60});
+
                   res.format({
                       //HTML response will set the location and redirect back to the home page. You could also create a 'success' page if that's your thing
                     html: function(){
@@ -223,36 +228,39 @@ router.put('/:id/edit', function(req, res) {
         });
 });
 
-// //DELETE a Blob by ID
-// router.delete('/:id/edit', function (req, res){
-//     //find blob by ID
-//     mongoose.model('form').findById(req.id, function (err, blob) {
-//         if (err) {
-//             return console.error(err);
-//         } else {
-//             //remove it from Mongo
-//             blob.remove(function (err, blob) {
-//                 if (err) {
-//                     return console.error(err);
-//                 } else {
-//                     //Returning success messages saying it was deleted
-//                     console.log('DELETE removing ID: ' + blob ? blob._id : null);
-//                     res.format({
-//                         //HTML returns us back to the main page, or you can create a success page
-//                           html: function(){
-//                                res.redirect("/blobs");
-//                          },
-//                          //JSON returns the item with the message that is has been deleted
-//                         json: function(){
-//                                res.json({message : 'deleted',
-//                                    item : blob
-//                                });
-//                          }
-//                       });
-//                 }
-//             });
-//         }
-//     });
-// });
+//DELETE a Blob by ID
+router.get('/:id/delete', function (req, res){
+    //find blob by ID
+    mongoose.model('form').findById(req.id, function (err, blob) {
+        if (err) {
+            return console.error(err);
+        } else {
+            //remove it from Mongo
+            blob.remove(function (err, blob) {
+                if (err) {
+                    return console.error(err);
+                } else {
+                    //Returning success messages saying it was deleted
+                    console.log('DELETE removing ID: ' + blob ? blob._id : null);
+
+                    cookies.erase('id');
+
+                    res.format({
+                        //HTML returns us back to the main page, or you can create a success page
+                          html: function(){
+                               res.redirect("/blobs");
+                         },
+                         //JSON returns the item with the message that is has been deleted
+                        json: function(){
+                               res.json({message : 'deleted',
+                                   item : blob
+                               });
+                         }
+                      });
+                }
+            });
+        }
+    });
+});
 
 module.exports = router;
