@@ -4,7 +4,7 @@ var express = require('express'),
     bodyParser = require('body-parser'), //parses information from POST
     methodOverride = require('method-override'); //used to manipulate POST
     
-var cookies = require('browser-cookies');
+// var cookies = require('browser-cookies');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride(function(req, res){
@@ -50,7 +50,7 @@ router.route('/')
                   //Blob has been created
                   console.log('POST creating new blob: ' + blob);
 
-                  cookies.set('id', blob._id, {expires: 60});
+                  // cookies.set('id', blob._id, {expires: 60});
 
                   res.format({
                       //HTML response will set the location and redirect back to the home page. You could also create a 'success' page if that's your thing
@@ -243,7 +243,7 @@ router.get('/:id/delete', function (req, res){
                     //Returning success messages saying it was deleted
                     console.log('DELETE removing ID: ' + blob ? blob._id : null);
 
-                    cookies.erase('id');
+                    // cookies.erase('id');
 
                     res.format({
                         //HTML returns us back to the main page, or you can create a success page
